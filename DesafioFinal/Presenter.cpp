@@ -17,6 +17,11 @@ void Presenter::initializeBooks() {
 	vector<std::string> val;
 	while (getline(MyReadFile, myText)) {
 		val = explode(myText, 'ƒ');
+		// Check that all the values are filled
+		val.at(0);
+		val.at(1);
+		val.at(2);
+
 		Book book;
 		book.setName(val[0]);
 		book.setISBNcode(val[1]);
@@ -33,6 +38,11 @@ void Presenter::initializeMembers()
 	vector<std::string> val;
 	while (getline(MyReadFile, myText)) {
 		val = explode(myText, 'ƒ');
+		// Check that all the values are filled
+		val.at(0);
+		val.at(1);
+		val.at(2);
+
 		if (stoi(val[3]) == 0) {
 			Member m;
 			m.setName(val[0]);
@@ -57,14 +67,24 @@ void Presenter::initializeExemplars()
 	ifstream MyReadFile("exemplars.txt");
 	vector<std::string> val;
 	while (getline(MyReadFile, myText)) {
-		val = explode(myText, 'ƒ');
-		int bookindex = library->getBookIndexfromList(val[0]);
-		Book book = library->getBookfromIndex(bookindex);
-		Exemplar exemplar;
-		exemplar.seteditionNumber(stoi(val[1]));
-		exemplar.setLocation(val[2]);
-		book.addExemplar(exemplar);
-		library->setBookfromIndex(bookindex, book);
+		try {
+			val = explode(myText, 'ƒ');
+			// Check that all the values are filled
+			val.at(0);
+			val.at(1);
+			val.at(2);
+
+			int bookindex = library->getBookIndexfromList(val[0]);
+			Book book = library->getBookfromIndex(bookindex);
+			Exemplar exemplar;
+			exemplar.seteditionNumber(stoi(val[1]));
+			exemplar.setLocation(val[2]);
+			exemplar.setBookISBNcode(book.getISBNcode());
+			book.addExemplar(exemplar);
+			library->setBookfromIndex(bookindex, book);
+		} catch(...) {
+			// Ignore row
+		}
 	}
 	MyReadFile.close();
 }
@@ -79,6 +99,12 @@ void Presenter::initializeLoanHistory()
 			int editionNumber;
 			time_t date;
 			val = explode(myText, 'ƒ');
+			// Check that all the values are filled
+			val.at(0);
+			val.at(1);
+			val.at(2);
+			val.at(3);
+
 			bookISBNcode = val[0];
 			editionNumber = stoi(val[1]);
 			date = (time_t)std::stoi(val[2]);
@@ -115,6 +141,12 @@ void Presenter::initializeReturnHistory()
 		int editionNumber;
 		time_t date;
 		val = explode(myText, 'ƒ');
+		// Check that all the values are filled
+		val.at(0);
+		val.at(1);
+		val.at(2);
+		val.at(3);
+
 		bookISBNcode = val[0];
 		editionNumber = stoi(val[1]);
 		date = (time_t)std::stoi(val[2]);
@@ -226,7 +258,7 @@ void Presenter::membersMenu()
 		membersList();
 		break;
 	case '2':
-		membersNew();
+		membersNew(0,0);
 		break;
 	case '3':
 		membersDelete();
@@ -246,34 +278,70 @@ void Presenter::membersList()
 	membersMenu();
 }
 
-void Presenter::membersNew()
+void Presenter::membersNew(int step, int error)
 {
-	string name, lastname, number, stringtype;
 	int type;
-	view->memberNew(0);
-	getline(std::cin, name);
-	view->memberNew(1);
-	getline(std::cin, lastname);
-	view->memberNew(2);
-	getline(std::cin, number);
-	view->memberNew(3);
-	getline(std::cin, stringtype);
-	type = stoi(stringtype);
-	if (type == 0) {
-		Member m;
-		m.setName(name);
-		m.setLastName(lastname);
-		m.setIDnumber(number);
-		library->addMember(m);
-	} else if (type == 1) {
-		VIP v;
-		v.setName(name);
-		v.setLastName(lastname);
-		v.setIDnumber(number);
-		library->addMember(v);
+	if (step == 0) {
+		view->memberNew(0, error);
+		getline(std::cin, member_name);
+		if (member_name == "") {
+			membersNew(0, 1);
+		}
+		else {
+			error = 0;
+		}
 	}
-	saveMembersToFile();
-	membersMenu();
+	if (step == 0 || step == 1) {
+		view->memberNew(1, error);
+		getline(std::cin, member_lastname);
+		if (member_lastname == "") {
+			membersNew(1, 1);
+		}
+		else {
+			error = 0;
+		}
+	}
+	if (step == 0 || step == 2) {
+		view->memberNew(2, error);
+		getline(std::cin, member_number);
+		if (member_number == "") {
+			membersNew(2, 1);
+		}
+		else {
+			error = 0;
+		}
+	}
+	if (step == 0 || step == 3) {
+		view->memberNew(3, error);
+		getline(std::cin, member_stringtype);
+		try {
+			type = stoi(member_stringtype);
+			if (type != 0 && type != 1) {
+				membersNew(3, 1);
+			}
+			else {
+				if (type == 0) {
+					Member m;
+					m.setName(member_name);
+					m.setLastName(member_lastname);
+					m.setIDnumber(member_number);
+					library->addMember(m);
+				}
+				else if (type == 1) {
+					VIP v;
+					v.setName(member_name);
+					v.setLastName(member_lastname);
+					v.setIDnumber(member_number);
+					library->addMember(v);
+				}
+				saveMembersToFile();
+				membersMenu();
+			}
+		}
+		catch (...) {
+			membersNew(3, 1);
+		}
+	}
 }
 
 void Presenter::saveMembersToFile() {
@@ -503,7 +571,7 @@ void Presenter::bookMenu()
 		bookList();
 		break;
 	case '2':
-		bookNew();
+		bookNew(0,0);
 		break;
 	case '3':
 		bookDelete();
@@ -523,19 +591,49 @@ void Presenter::bookList()
 	bookMenu();
 }
 
-void Presenter::bookNew()
+void Presenter::bookNew(int step, int error)
 {
-	string name, autor, ISBNcode;
-	view->bookNew(0);
-	getline(std::cin, ISBNcode);
-	view->bookNew(1);
-	getline(std::cin, name);
-	view->bookNew(2);
-	getline(std::cin, autor);
+
+	if (step == 0) {
+		view->bookNew(0,error);
+		getline(std::cin, book_ISBNcode);
+		if (book_ISBNcode == "") {
+			bookNew(0, 1);
+		}
+		else {
+			error = 0;
+			step = 0;
+		}
+	}
+
+	if (step == 0 || step == 1) {
+		view->bookNew(1, error);
+		getline(std::cin, book_name);
+		if (book_name == "") {
+			bookNew(1, 1);
+		}
+		else {
+			error = 0;
+			step = 0;
+		}
+	}
+
+	if (step == 0 || step == 2) {
+		view->bookNew(2, error);
+		getline(std::cin, book_autor);
+		if (book_autor == "") {
+			bookNew(2, 1);
+		}
+		else {
+			error = 0;
+			step = 0;
+		}
+	}
+
 	Book b;
-	b.setISBNcode(ISBNcode);
-	b.setName(name);
-	b.setAuthor(autor);	
+	b.setISBNcode(book_ISBNcode);
+	b.setName(book_name);
+	b.setAuthor(book_autor);
 	library->addBook(b);
 	saveBooksToFile();
 	bookMenu();
@@ -550,7 +648,6 @@ void Presenter::saveBooksToFile() {
 	for (iter = list.begin(); iter != list.end(); ++iter) {
 		MyFile << iter->getName() << "ƒ";
 		MyFile << iter->getISBNcode() << "ƒ";
-		MyFile << iter->getName() << "ƒ";
 		MyFile << iter->getAuthor() << "\n";
 	}
 	MyFile.close();
@@ -588,7 +685,7 @@ void Presenter::exemplarMenu(Book book, int index)
 		exemplarList(book,index);
 		break;
 	case '2':
-		exemplarNew(book,index);
+		exemplarNew(book,index,0,0);
 		break;
 	case '3':
 		exemplarDelete(book,index);
@@ -610,23 +707,32 @@ void Presenter::exemplarList(Book book,int index)
 	exemplarMenu(book,index);
 }
 
-void Presenter::exemplarNew(Book book, int index)
+void Presenter::exemplarNew(Book book, int index, int step, int error)
 {
-	int editionNumber;
-	string location, en;
-	view->exemplarNew(0,book);
-	getline(std::cin, en);
+
+	view->exemplarNew(0,book,error);
+	getline(std::cin, exemplar_en);
 	try {
-		editionNumber = stoi(en);
+		exemplar_editionNumber = stoi(exemplar_en);
 	}
 	catch (...) {
-		exemplarNew(book, index);
+		exemplarNew(book, index,0,1);
+		step = 1;
 	}
-	view->exemplarNew(1,book);
-	getline(std::cin, location);
+
+	if (step == 1) {
+		view->exemplarNew(1, book, 0);
+		getline(std::cin, exemplar_location);
+		if (exemplar_location == "") {
+			exemplarNew(book,index, 1, 1);
+		}
+	}
+
+
 	Exemplar exemplar;
-	exemplar.seteditionNumber(editionNumber);
-	exemplar.setLocation(location);
+	exemplar.seteditionNumber(exemplar_editionNumber);
+	exemplar.setLocation(exemplar_location);
+	exemplar.setBookISBNcode(book.getISBNcode());
 	book.addExemplar(exemplar);
 	library->setBookfromIndex(index,book);
 	saveExemplarsToFile(book);
@@ -635,14 +741,20 @@ void Presenter::exemplarNew(Book book, int index)
 
 void Presenter::saveExemplarsToFile(Book book) {
 	ofstream MyFile("exemplars.txt");
-	vector<Exemplar> list = book.getExemplarList();
-	vector<Exemplar>::iterator iter;
+
+	vector<Book> list = library->getBookList();
+	vector<Book>::iterator iter;
 
 	// use iterator with for loop
 	for (iter = list.begin(); iter != list.end(); ++iter) {
-		MyFile << book.getISBNcode() << "ƒ";
-		MyFile << iter->geteditionNumber() << "ƒ";
-		MyFile << iter->getLocation() << "\n";
+		vector<Exemplar> elist = iter->getExemplarList();
+		vector<Exemplar>::iterator iter2;
+		for (iter2 = elist.begin(); iter2 != elist.end(); ++iter2) {
+			MyFile << iter->getISBNcode() << "ƒ";
+			MyFile << iter2->geteditionNumber() << "ƒ";
+			MyFile << iter2->getLocation() << "\n";
+		}
+
 	}
 	MyFile.close();
 }

@@ -15,6 +15,10 @@
 class Presenter
 {
 private:
+	string member_name, member_lastname, member_number, member_stringtype;
+	string book_name, book_autor, book_ISBNcode;
+	int exemplar_editionNumber;
+	string exemplar_location, exemplar_en;
 	View* view = new View();
 	Library* library = new Library();
 	map<int, int> exemplarloaned;
@@ -28,7 +32,7 @@ private:
 	void returnHistory();
 	void membersMenu();
 	void membersList();
-	void membersNew();
+	void membersNew(int step, int error);
 	void saveMembersToFile();
 	void membersDelete();
 	void addLoan_ChooseMember(int error);
@@ -42,12 +46,12 @@ private:
 	void saveReturnOnFile(Return ret);
 	void bookMenu();
 	void bookList();
-	void bookNew();
+	void bookNew(int step, int error);
 	void saveBooksToFile();
 	void bookDelete();
 	void exemplarMenu(Book b,int index);
 	void exemplarList(Book b, int index);
-	void exemplarNew(Book b, int index);
+	void exemplarNew(Book b, int index, int step, int error);
 	void saveExemplarsToFile(Book book);
 	void exemplarDelete(Book b, int index);
 	void bookExemplars(int error);

@@ -16,7 +16,7 @@ public:
 	void returnHistory(vector<Return> r);
 	void membersMenu();
 	void membersList(vector<Member> members);
-	void memberNew(int param);
+	void memberNew(int param, int error);
 	void memberDelete(vector<Member> members);
 	void addLoan(int param, vector<Member> members, vector<Book> books, Book selectedbook, int error);
 	void showLoan(Exemplar exemplar, Book book);
@@ -24,11 +24,11 @@ public:
 	void addReturn(int param, vector<Member> members, vector<Exemplar> exemplars, int error);
 	void bookMenu();
 	void bookList(vector<Book> books);
-	void bookNew(int param);
+	void bookNew(int param, int error);
 	void bookDelete(vector<Book> books);
 	void exemplarMenu(Book book);
 	void exemplarList(vector<Exemplar> exemplar, Book book);
-	void exemplarNew(int param, Book book);
+	void exemplarNew(int param, Book book, int error);
 	void exemplarDelete(vector<Exemplar> exemplar, Book book);
 	void exemplarBook(vector<Book> books, int error);
 };

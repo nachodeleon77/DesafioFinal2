@@ -11,4 +11,7 @@ C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(8,10): warn
 C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(9,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(10,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(11,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(63,10): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(64,10): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(65,10): warning C4834: discarding return value of function with 'nodiscard' attribute
   DesafioFinal.vcxproj -> C:\Users\Usuario\source\repos\DesafioFinal2\x64\Debug\DesafioFinal.exe

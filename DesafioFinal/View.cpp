@@ -100,7 +100,7 @@ void View::membersList(vector<Member> members)
 	}
 }
 
-void View::memberNew(int param)
+void View::memberNew(int param, int error)
 {
 	if (param == 0) {
 		system("CLS");
@@ -109,13 +109,29 @@ void View::memberNew(int param)
 	}
 
 	if (param == 0) {
+		if (error == 1) {
+			//system("CLS");
+			cout << "\033[31m" << "Ingrese Nombre\n" << "\033[0m";
+		}
 		cout << "Nombre: ";
 	} else 	if (param == 1) {
+		if (error == 1) {
+			//system("CLS");
+			cout << "\033[31m" << "Ingrese Apellido\n" << "\033[0m";
+		}
 		cout << "Apellido: ";
 	}
 	else if (param == 2) {
+		if (error == 1) {
+			//system("CLS");
+			cout << "\033[31m" << "Ingrese numero de socio correcto\n" << "\033[0m";
+		}
 		cout << "Numero Socio: ";
 	} else if (param == 3) {
+		if (error == 1) {
+			//system("CLS");
+			cout << "\033[31m" << "Ingrese tipo de socio correcto (0,1)\n" << "\033[0m";
+		}
 		cout << "Tipo de Socio (0- Regular, 1 - VIP): ";
 	}
 }
@@ -302,7 +318,7 @@ void View::bookList(vector<Book> books)
 	}
 }
 
-void View::bookNew(int param)
+void View::bookNew(int param,int error)
 {
 	if (param == 0) {
 		system("CLS");
@@ -311,12 +327,21 @@ void View::bookNew(int param)
 	}
 
 	if (param == 0) {
+		if (error == 1) {
+			cout << "\033[31m" << "Ingrese Codigo ISBN\n" << "\033[0m";
+		}
 		cout << "Codigo ISBN: ";
 	}
-	else 	if (param == 1) {
+	else if (param == 1) {
+		if (error == 1) {
+			cout << "\033[31m" << "Ingrese Nombre\n" << "\033[0m";
+		}
 		cout << "Nombre: ";
 	}
 	else if (param == 2) {
+		if (error == 1) {
+			cout << "\033[31m" << "Ingrese Autor\n" << "\033[0m";
+		}
 		cout << "Autor: ";
 	}
 }
@@ -380,7 +405,7 @@ void View::exemplarList(vector<Exemplar> exemplar, Book book)
 	}
 }
 
-void View::exemplarNew(int param, Book book)
+void View::exemplarNew(int param, Book book, int error)
 {
 	if (param == 0) {
 		system("CLS");
@@ -391,9 +416,15 @@ void View::exemplarNew(int param, Book book)
 	}
 
 	if (param == 0) {
+		if (error == 1) {
+			cout << "\033[31m" << "Ingrese Numero de edicion valido\n" << "\033[0m";
+		}
 		cout << "Numero de edicion: ";
 	}
 	else 	if (param == 1) {
+		if (error == 1) {
+			cout << "\033[31m" << "Ingrese Ubicacion valida\n" << "\033[0m";
+		}
 		cout << "Ubicacion: ";
 	}
 }
