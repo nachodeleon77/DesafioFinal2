@@ -33,5 +33,6 @@ public:
 	vector<Exemplar> getExemplarList();
 	int getExemplarIndexfromList(int editionNumber);
 	Exemplar getExemplarfromIndex(int index);
+	void deleteExemplarByIndex(int i);
 };
 

@@ -3,6 +3,7 @@
 Presenter::Presenter()
 {
 	initializeBooks();
+	initializeExemplars();
 	initializeMembers();
 	initializeLoanHistory();
 	initializeReturnHistory();
@@ -11,50 +12,18 @@ Presenter::Presenter()
 }
 
 void Presenter::initializeBooks() {
-	/**************** Libro 1 *************************/
-	Book book;
-	book.setName("Padre Rico, padre Pobre");
-	book.setISBNcode("P435");
-	book.setAuthor("Robert Kirosaki");
-	Exemplar e(1010, "A54", book.getISBNcode());
-	book.addExemplar(e);
-	Exemplar e1(1001, "C76", book.getISBNcode());
-	book.addExemplar(e1);
-	Exemplar e2(1002, "A32", book.getISBNcode());
-	book.addExemplar(e2);
-	Exemplar e3(1003, "G87", book.getISBNcode());
-	book.addExemplar(e3);
-	Exemplar e4(1004, "H92", book.getISBNcode());
-	book.addExemplar(e4);
-	library->addBook(book);
-	/**************** Libro 2 *************************/
-	Book book1;
-	book1.setName("Ocho millones de dioses");
-	book1.setISBNcode("F574");
-	book1.setAuthor("Juan Alberto");
-	Exemplar e0(1005, "F43", book1.getISBNcode());
-	book1.addExemplar(e0);
-	Exemplar e01(1006, "T71", book1.getISBNcode());
-	book1.addExemplar(e01);
-	library->addBook(book1);
-	/**************** Libro 3 *************************/
-	Book book2;
-	book2.setName("Harry Potter");
-	book2.setISBNcode("J765");
-	book2.setAuthor("JK Rowling");
-	Exemplar e10(1007, "U35", book2.getISBNcode());
-	book2.addExemplar(e10);
-	library->addBook(book2);
-	/**************** Libro 4 *************************/
-	Book book3;
-	book3.setName("Crepusculo");
-	book3.setISBNcode("L654");
-	book3.setAuthor("Stephenie Meyer");
-	Exemplar e20(1008, "T39", book3.getISBNcode());
-	book3.addExemplar(e20);
-	Exemplar e21(1009, "Q81", book3.getISBNcode());
-	book3.addExemplar(e21);
-	library->addBook(book3);
+	string myText;
+	ifstream MyReadFile("books.txt");
+	vector<std::string> val;
+	while (getline(MyReadFile, myText)) {
+		val = explode(myText, 'ƒ');
+		Book book;
+		book.setName(val[0]);
+		book.setISBNcode(val[1]);
+		book.setAuthor(val[2]);
+		library->addBook(book);
+	}
+	MyReadFile.close();
 }
 
 void Presenter::initializeMembers()
@@ -78,6 +47,24 @@ void Presenter::initializeMembers()
 			v.setIDnumber(val[2]);
 			library->addMember(v);
 		}
+	}
+	MyReadFile.close();
+}
+
+void Presenter::initializeExemplars()
+{
+	string myText;
+	ifstream MyReadFile("exemplars.txt");
+	vector<std::string> val;
+	while (getline(MyReadFile, myText)) {
+		val = explode(myText, 'ƒ');
+		int bookindex = library->getBookIndexfromList(val[0]);
+		Book book = library->getBookfromIndex(bookindex);
+		Exemplar exemplar;
+		exemplar.seteditionNumber(stoi(val[1]));
+		exemplar.setLocation(val[2]);
+		book.addExemplar(exemplar);
+		library->setBookfromIndex(bookindex, book);
 	}
 	MyReadFile.close();
 }
@@ -205,7 +192,7 @@ void Presenter::menu()
 		bookMenu();
 		break;
 	case '7':
-		cout << "Ejemplares";
+		bookExemplars(0);
 		break;
 	case '8':
 		exit(0);
@@ -555,7 +542,7 @@ void Presenter::bookNew()
 }
 
 void Presenter::saveBooksToFile() {
-	ofstream MyFile("bookw.txt");
+	ofstream MyFile("books.txt");
 	vector<Book> list = library->getBookList();
 	vector<Book>::iterator iter;
 
@@ -587,6 +574,124 @@ void Presenter::bookDelete()
 			library->deleteBookByIndex(indexToDelete);
 			saveBooksToFile();
 			bookMenu();
+		}
+	}
+}
+
+void Presenter::exemplarMenu(Book book, int index)
+{
+	view->exemplarMenu(book);
+	char ch = _getch();
+	cout << ch;
+	switch (ch) {
+	case '1':
+		exemplarList(book,index);
+		break;
+	case '2':
+		exemplarNew(book,index);
+		break;
+	case '3':
+		exemplarDelete(book,index);
+		break;
+	case esc:
+		menu();
+		break;
+	default:
+		exemplarMenu(book,index);
+	}
+}
+
+
+
+void Presenter::exemplarList(Book book,int index)
+{
+	view->exemplarList(book.getExemplarList(),book);
+	_getch();
+	exemplarMenu(book,index);
+}
+
+void Presenter::exemplarNew(Book book, int index)
+{
+	int editionNumber;
+	string location, en;
+	view->exemplarNew(0,book);
+	getline(std::cin, en);
+	try {
+		editionNumber = stoi(en);
+	}
+	catch (...) {
+		exemplarNew(book, index);
+	}
+	view->exemplarNew(1,book);
+	getline(std::cin, location);
+	Exemplar exemplar;
+	exemplar.seteditionNumber(editionNumber);
+	exemplar.setLocation(location);
+	book.addExemplar(exemplar);
+	library->setBookfromIndex(index,book);
+	saveExemplarsToFile(book);
+	exemplarMenu(book, index);
+}
+
+void Presenter::saveExemplarsToFile(Book book) {
+	ofstream MyFile("exemplars.txt");
+	vector<Exemplar> list = book.getExemplarList();
+	vector<Exemplar>::iterator iter;
+
+	// use iterator with for loop
+	for (iter = list.begin(); iter != list.end(); ++iter) {
+		MyFile << book.getISBNcode() << "ƒ";
+		MyFile << iter->geteditionNumber() << "ƒ";
+		MyFile << iter->getLocation() << "\n";
+	}
+	MyFile.close();
+}
+
+void Presenter::exemplarDelete(Book b, int index)
+{
+	view->exemplarDelete(b.getExemplarList(),b);
+	int number;
+	string n;
+	getline(std::cin, n);
+	if (n == "q") {
+		exemplarMenu(b,index);
+	} else {
+		try {
+			number = stoi(n);
+		}
+		catch (...) {
+			exemplarDelete(b, index);
+		}
+		int indexToDelete = b.getExemplarIndexfromList(number);
+		cout << indexToDelete;
+		if (indexToDelete == -1) {
+			exemplarDelete(b,index);
+		}
+		else {
+			b.deleteExemplarByIndex(indexToDelete);
+			library->setBookfromIndex(index,b);
+			saveExemplarsToFile(b);
+			exemplarMenu(b, index);
+		}
+	}
+}
+
+void Presenter::bookExemplars(int error)
+{
+	string number, booknumber;
+	Book selectedBook;
+	view->exemplarBook(library->getBookList(),error);
+	getline(std::cin, booknumber);
+	if (booknumber == "q") {
+		menu();
+	}
+	else {
+		int bookindex = library->getBookIndexfromList(booknumber);
+		if (bookindex == -1) { // No existe el libro seleccionado
+			bookExemplars(1);
+		}
+		else {
+			exemplarMenu(library->getBookfromIndex(bookindex),bookindex);
 		}
 	}
 }

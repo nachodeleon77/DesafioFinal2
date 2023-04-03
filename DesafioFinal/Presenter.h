@@ -20,6 +20,7 @@ private:
 	map<int, int> exemplarloaned;
 	void initializeBooks();
 	void initializeMembers();
+	void initializeExemplars();
 	void initializeLoanHistory();
 	void initializeReturnHistory();
 	void menu();
@@ -44,6 +45,12 @@ private:
 	void bookNew();
 	void saveBooksToFile();
 	void bookDelete();
+	void exemplarMenu(Book b,int index);
+	void exemplarList(Book b, int index);
+	void exemplarNew(Book b, int index);
+	void saveExemplarsToFile(Book book);
+	void exemplarDelete(Book b, int index);
+	void bookExemplars(int error);
 public:
 	Presenter();
 };

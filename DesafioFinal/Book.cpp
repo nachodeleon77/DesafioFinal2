@@ -104,3 +104,8 @@ Exemplar Book::getExemplarfromIndex(int index)
 {
 	return exemplarList[index];
 }
+
+void Book::deleteExemplarByIndex(int i)
+{
+	this->exemplarList.erase(this->exemplarList.begin() + i);
+}

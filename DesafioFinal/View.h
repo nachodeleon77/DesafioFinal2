@@ -26,5 +26,10 @@ public:
 	void bookList(vector<Book> books);
 	void bookNew(int param);
 	void bookDelete(vector<Book> books);
+	void exemplarMenu(Book book);
+	void exemplarList(vector<Exemplar> exemplar, Book book);
+	void exemplarNew(int param, Book book);
+	void exemplarDelete(vector<Exemplar> exemplar, Book book);
+	void exemplarBook(vector<Book> books, int error);
 };
 
