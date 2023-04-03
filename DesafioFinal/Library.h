@@ -23,6 +23,7 @@ public:
 	int getMemberIndexfromList(string idnumber);
 	int getBookIndexfromList(string ISBNcode);
 	void deleteMemberByIndex(int i);
+	void deleteBookByIndex(int i);
 	Book getBookfromIndex(int index);
 	void setBookfromIndex(int index, Book book);
 	Member getMemberfromIndex(int index);

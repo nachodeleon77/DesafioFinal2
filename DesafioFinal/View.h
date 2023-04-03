@@ -22,5 +22,9 @@ public:
 	void showLoan(Exemplar exemplar, Book book);
 	void showNoExemplars();
 	void addReturn(int param, vector<Member> members, vector<Exemplar> exemplars, int error);
+	void bookMenu();
+	void bookList(vector<Book> books);
+	void bookNew(int param);
+	void bookDelete(vector<Book> books);
 };
 

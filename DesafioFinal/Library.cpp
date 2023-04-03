@@ -42,10 +42,8 @@ void Library::addBook(Book book)
 
 int Library::getMemberIndexfromList(string idnumber)
 {
-	// declare iterator
 	vector<Member>::iterator iter;
 	int i = 0;
-	// use iterator with for loop
 	for (iter = this->memberList.begin(); iter != this->memberList.end(); ++iter) {
 		if (iter->getIdnumber() == idnumber) {
 			return i;
@@ -58,10 +56,8 @@ int Library::getMemberIndexfromList(string idnumber)
 
 int Library::getBookIndexfromList(string ISBNcode)
 {
-	// declare iterator
 	vector<Book>::iterator iter;
 	int i = 0;
-	// use iterator with for loop
 	for (iter = this->bookList.begin(); iter != this->bookList.end(); ++iter) {
 		if (iter->getISBNcode() == ISBNcode) {
 			return i;
@@ -75,6 +71,11 @@ int Library::getBookIndexfromList(string ISBNcode)
 void Library::deleteMemberByIndex(int i)
 {
 	this->memberList.erase(this->memberList.begin() + i);
+}
+
+void Library::deleteBookByIndex(int i)
+{
+	this->bookList.erase(this->bookList.begin() + i);
 }
 
 Book Library::getBookfromIndex(int index)
@@ -99,10 +100,7 @@ void Library::setMemberfromIndex(int index, Member member)
 
 void Library::printBooks()
 {
-	// declare iterator
 	vector<Book>::iterator iter;
-
-	// use iterator with for loop
 	for (iter = this->bookList.begin(); iter != this->bookList.end(); ++iter) {
 		cout << iter->getISBNcode() << " - " << iter->getName() << "\n";
 	}
@@ -110,10 +108,8 @@ void Library::printBooks()
 
 int Library::getExemplarfromList(vector<Exemplar> exemplars, int editionNumber)
 {
-	// declare iterator
 	vector<Exemplar>::iterator iter;
 	int i = 0;
-	// use iterator with for loop
 	for (iter = exemplars.begin(); iter != exemplars.end(); ++iter) {
 		if (iter->geteditionNumber() == editionNumber) {
 			return i;

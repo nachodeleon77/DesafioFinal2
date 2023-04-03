@@ -10,7 +10,9 @@ void View::showMenu() {
 	cout << "3) Devolucion\n";
 	cout << "4) Historial de Devoluciones\n";
 	cout << "5) Socios\n";
-	cout << "6) Salir\n";
+	cout << "6) Libros\n";
+	cout << "7) Ejemplares\n";
+	cout << "8) Salir\n";
 	cout << "\n";
 	cout << "SELECCIONE UNA OPCION DEL MENU: ";
 }
@@ -261,5 +263,80 @@ void View::addReturn(int param, vector<Member> members, vector<Exemplar> exempla
 			}
 			cout << "Ingrese el codigo del ejemplar # ((q) para volver): ";
 		}
+	}
+}
+
+void View::bookMenu()
+{
+	system("CLS");
+	cout << "BIBLIOTECA - LIBROS\n";
+	cout << "-----------------------------------------------------\n";
+	cout << "\n";
+	cout << "1) Listado de Libros\n";
+	cout << "2) Nuevo Libro\n";
+	cout << "3) Eliminar Libro\n";
+	cout << "esc) Volver\n";
+	cout << "\n";
+	cout << "SELECCIONE UNA OPCION DEL MENU: ";
+}
+
+void View::bookList(vector<Book> books)
+{
+	system("CLS");
+	cout << "BIBLIOTECA - LISTADO DE LIBROS\n";
+	cout << "-----------------------------------------------------\n";
+	if ((int)books.size() == 0) {
+		cout << "No hay libros\n";
+		cout << "-----------------------------------------------------\n";
+		cout << "Presione cualquier tecla para volver al menu principal";
+	}
+	else {
+		vector<Book>::iterator iter;
+		for (iter = books.begin(); iter != books.end(); ++iter) {
+			cout << "Codigo ISBN #: " << iter->getISBNcode() << "\n";
+			cout << "Nombre: " << iter->getName() << "\n";
+			cout << "Autor: " << iter->getAuthor() << "\n";
+			cout << "-----------------------------------------------------\n";
+		}
+		cout << "Presione cualquier tecla para volver al menu principal";
+	}
+}
+
+void View::bookNew(int param)
+{
+	if (param == 0) {
+		system("CLS");
+		cout << "BIBLIOTECA - NUEVO LIBRO\n";
+		cout << "-----------------------------------------------------\n";
+	}
+
+	if (param == 0) {
+		cout << "Codigo ISBN: ";
+	}
+	else 	if (param == 1) {
+		cout << "Nombre: ";
+	}
+	else if (param == 2) {
+		cout << "Autor: ";
+	}
+}
+
+void View::bookDelete(vector<Book> books)
+{
+	system("CLS");
+	cout << "BIBLIOTECA - Eliminar Libro\n";
+	cout << "-----------------------------------------------------\n";
+	if ((int)books.size() == 0) {
+		cout << "No hay libros\n";
+		cout << "-----------------------------------------------------\n";
+		cout << "Presione una tecla para volver al menu\n";
+	}
+	else {
+		vector<Book>::iterator iter;
+		for (iter = books.begin(); iter != books.end(); ++iter) {
+			cout << "# " << iter->getISBNcode() << " - " << iter->getName() << " " << iter->getAuthor() << "\n";
+			cout << "-----------------------------------------------------\n";
+		}
+		cout << "Ingrese el numero de libro # ((q) para volver): ";
 	}
 }

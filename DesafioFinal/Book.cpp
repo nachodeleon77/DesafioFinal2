@@ -41,10 +41,7 @@ void Book::addExemplar(Exemplar e)
 
 void Book::printExemplars()
 {
-	// declare iterator
 	vector<Exemplar>::iterator iter;
-
-	// use iterator with for loop
 	for (iter = this->exemplarList.begin(); iter != this->exemplarList.end(); ++iter) {
 		cout << iter->getLocation() << " - " << iter->geteditionNumber() << "\n";
 	}
@@ -91,10 +88,8 @@ vector<Exemplar> Book::getExemplarList()
 
 int Book::getExemplarIndexfromList(int editionNumber)
 {
-	// declare iterator
 	vector<Exemplar>::iterator iter;
 	int i = 0;
-	// use iterator with for loop
 	for (iter = this->exemplarList.begin(); iter != this->exemplarList.end(); ++iter) {
 		if (iter->geteditionNumber() == editionNumber) {
 			return i;

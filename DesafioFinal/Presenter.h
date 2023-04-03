@@ -39,6 +39,11 @@ private:
 	void addReturn_Save(int memberindex, Exemplar exemplar);
 	void saveLoanOnFile(Loan loan);
 	void saveReturnOnFile(Return ret);
+	void bookMenu();
+	void bookList();
+	void bookNew();
+	void saveBooksToFile();
+	void bookDelete();
 public:
 	Presenter();
 };

@@ -2,9 +2,9 @@
 
 Member::Member()
 {
-	this->name = "Sin Nombre";
-	this->lastname = "Sin Apellido";
-	this->idnumber = "367784";
+	this->name = "";
+	this->lastname = "";
+	this->idnumber = "";
 	this->setMaxBooks(1);
 	this->type = 0;
 }
@@ -61,10 +61,7 @@ void Member::Borrow(Exemplar e)
 
 void Member::printExemplars()
 {
-	// declare iterator
 	vector<Exemplar>::iterator iter;
-
-	// use iterator with for loop
 	for (iter = this->exemplarList.begin(); iter != this->exemplarList.end(); ++iter) {
 		cout << iter->getLocation() << " - " << iter->geteditionNumber() << "\n";
 	}
@@ -99,10 +96,7 @@ bool Member::canBorrow()
 
 void Member::returnExemplar(Exemplar e)
 {
-	// declare iterator
 	vector<Exemplar>::iterator iter;
-
-	// use iterator with for loop
 	for (iter = this->exemplarList.begin(); iter != this->exemplarList.end(); ++iter) {
 		if (e.geteditionNumber() == iter->geteditionNumber()) {
 			exemplarList.erase(iter);

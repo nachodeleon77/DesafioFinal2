@@ -1,1 +1,14 @@
-﻿  DesafioFinal.vcxproj -> C:\Users\Usuario\source\repos\DesafioFinal\x64\Debug\DesafioFinal.exe
+﻿  Presenter.cpp
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Presenter.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Loan.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Loan.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Loan.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Return.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Return.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Return.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Presenter.h(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Presenter.h(8,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Presenter.h(9,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Presenter.h(10,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal\DesafioFinal\Presenter.h(11,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  DesafioFinal.vcxproj -> C:\Users\Usuario\source\repos\DesafioFinal\x64\Debug\DesafioFinal.exe

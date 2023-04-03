@@ -202,6 +202,12 @@ void Presenter::menu()
 		membersMenu();
 		break;
 	case '6':
+		bookMenu();
+		break;
+	case '7':
+		cout << "Ejemplares";
+		break;
+	case '8':
 		exit(0);
 		break;
 	default:
@@ -500,3 +506,87 @@ void Presenter::saveReturnOnFile(Return ret)
 	MyFile.close();
 }
 
+void Presenter::bookMenu()
+{
+	view->bookMenu();
+	char ch = _getch();
+	cout << ch;
+	switch (ch) {
+	case '1':
+		bookList();
+		break;
+	case '2':
+		bookNew();
+		break;
+	case '3':
+		bookDelete();
+		break;
+	case esc:
+		menu();
+		break;
+	default:
+		bookMenu();
+	}
+}
+
+void Presenter::bookList()
+{
+	view->bookList(library->getBookList());
+	_getch();
+	bookMenu();
+}
+
+void Presenter::bookNew()
+{
+	string name, autor, ISBNcode;
+	view->bookNew(0);
+	getline(std::cin, ISBNcode);
+	view->bookNew(1);
+	getline(std::cin, name);
+	view->bookNew(2);
+	getline(std::cin, autor);
+	Book b;
+	b.setISBNcode(ISBNcode);
+	b.setName(name);
+	b.setAuthor(autor);	
+	library->addBook(b);
+	saveBooksToFile();
+	bookMenu();
+}
+
+void Presenter::saveBooksToFile() {
+	ofstream MyFile("bookw.txt");
+	vector<Book> list = library->getBookList();
+	vector<Book>::iterator iter;
+
+	// use iterator with for loop
+	for (iter = list.begin(); iter != list.end(); ++iter) {
+		MyFile << iter->getName() << "ƒ";
+		MyFile << iter->getISBNcode() << "ƒ";
+		MyFile << iter->getName() << "ƒ";
+		MyFile << iter->getAuthor() << "\n";
+	}
+	MyFile.close();
+}
+
+void Presenter::bookDelete()
+{
+	view->bookDelete(library->getBookList());
+	string number;
+	getline(std::cin, number);
+	if (number == "q") {
+		bookMenu();
+	}
+	else {
+		int indexToDelete = library->getBookIndexfromList(number);
+		cout << indexToDelete;
+		if (indexToDelete == -1) {
+			bookDelete();
+		}
+		else {
+			library->deleteBookByIndex(indexToDelete);
+			saveBooksToFile();
+			bookMenu();
+		}
+	}
+}
