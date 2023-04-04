@@ -709,19 +709,20 @@ void Presenter::exemplarList(Book book,int index)
 
 void Presenter::exemplarNew(Book book, int index, int step, int error)
 {
-
-	view->exemplarNew(0,book,error);
-	getline(std::cin, exemplar_en);
-	try {
-		exemplar_editionNumber = stoi(exemplar_en);
+	if (step == 0) {
+		view->exemplarNew(0, book, error);
+		getline(std::cin, exemplar_en);
+		try {
+			exemplar_editionNumber = stoi(exemplar_en);
+			error = 0;
+		}
+		catch (...) {
+			exemplarNew(book, index, 0, 1);
+			step = 1;
+		}
 	}
-	catch (...) {
-		exemplarNew(book, index,0,1);
-		step = 1;
-	}
-
-	if (step == 1) {
-		view->exemplarNew(1, book, 0);
+	if (step == 0 || step == 1) {
+		view->exemplarNew(1, book, error);
 		getline(std::cin, exemplar_location);
 		if (exemplar_location == "") {
 			exemplarNew(book,index, 1, 1);

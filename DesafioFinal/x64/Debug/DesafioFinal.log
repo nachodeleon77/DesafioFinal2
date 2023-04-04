@@ -1,4 +1,18 @@
-﻿  Presenter.cpp
+﻿  Book.cpp
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Book.cpp(57,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Exemplar.cpp
+  Library.cpp
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Loan.cpp
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  main.cpp
 C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
@@ -11,7 +25,50 @@ C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(8,10): warn
 C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(9,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(10,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(11,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(63,10): warning C4834: discarding return value of function with 'nodiscard' attribute
-C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(64,10): warning C4834: discarding return value of function with 'nodiscard' attribute
-C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(65,10): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Member.cpp
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Member.cpp(82,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Member.cpp(87,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Presenter.cpp
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(8,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(9,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(10,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.h(11,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(21,9): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(22,9): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(23,9): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(42,9): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(43,9): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(44,9): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(73,10): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(74,10): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(75,10): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(103,10): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(104,10): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(105,10): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(106,10): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(145,9): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(146,9): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(147,9): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Presenter.cpp(148,9): warning C4834: discarding return value of function with 'nodiscard' attribute
+  Return.cpp
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  View.cpp
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Loan.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Usuario\source\repos\DesafioFinal2\DesafioFinal\Return.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  VIP.cpp
+  Generating Code...
   DesafioFinal.vcxproj -> C:\Users\Usuario\source\repos\DesafioFinal2\x64\Debug\DesafioFinal.exe

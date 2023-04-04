@@ -408,7 +408,7 @@ void View::exemplarList(vector<Exemplar> exemplar, Book book)
 void View::exemplarNew(int param, Book book, int error)
 {
 	if (param == 0) {
-		system("CLS");
+		system("CLS");	
 		cout << "BIBLIOTECA - NUEVO EJEMPLAR\n";
 		cout << "-----------------------------------------------------\n";
 		cout << book.getName() << "(" << book.getISBNcode() << ")" << "\n";
@@ -421,7 +421,7 @@ void View::exemplarNew(int param, Book book, int error)
 		}
 		cout << "Numero de edicion: ";
 	}
-	else 	if (param == 1) {
+	else if (param == 1) {
 		if (error == 1) {
 			cout << "\033[31m" << "Ingrese Ubicacion valida\n" << "\033[0m";
 		}
